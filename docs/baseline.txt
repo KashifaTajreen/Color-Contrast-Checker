@@ -1,0 +1,438 @@
+SCENARIO: black/white
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: white/white
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #FFFFFF rgb(255, 255, 255)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 1.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | FAIL   | 4.50:1   |
+| WCAG AA    | Large text     | FAIL   | 3.00:1   |
+| WCAG AA    | UI component   | FAIL   | 3.00:1   |
+| WCAG AAA   | Normal text    | FAIL   | 7.00:1   |
+| WCAG AAA   | Large text     | FAIL   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+0 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - FAIL.
+This pair falls below the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: #777777/white
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #777777 rgb(119, 119, 119)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 4.48:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | FAIL   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | FAIL   | 7.00:1   |
+| WCAG AAA   | Large text     | FAIL   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+2 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - FAIL.
+This pair falls below the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: #767676/#FFF
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #767676 rgb(118, 118, 118)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 4.54:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | FAIL   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+4 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: #FFC0CB/#000080
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #FFC0CB rgb(255, 192, 203)
+Background: #000080 rgb(0, 0, 128)
+Contrast ratio: 10.41:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: rgb(255,87,51)/navy
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #FF5733 rgb(255, 87, 51)
+Background: #000080 rgb(0, 0, 128)
+Contrast ratio: 5.08:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | FAIL   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+4 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+SCENARIO: #FF0000/#FFFFFF
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #FF0000 rgb(255, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 4.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | FAIL   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | FAIL   | 7.00:1   |
+| WCAG AAA   | Large text     | FAIL   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+2 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - FAIL.
+This pair falls below the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+INVALID INPUTS (each followed by valid black):
+INPUT: [#GG1234]
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Invalid color: Use #RGB or #RRGGBB, for example #3AF.
+Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+INPUT: [rgb(300,0,0)]
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Invalid color: RGB channels must be between 0 and 255; received 300.
+Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+INPUT: [bluee]
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Invalid color: Unrecognized color. Supported formats: #RGB, #RRGGBB (also without #), rgb(255, 87, 51), 255,87,51, or a name such as navy.
+Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+INPUT: []
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Invalid color: Color cannot be null or empty. Supported formats: #RGB, #RRGGBB (also without #), rgb(255, 87, 51), 255,87,51, or a name such as navy.
+Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 
+INPUT: [   ]
+Color Contrast Checker
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: Foreground: Invalid color: Color cannot be null or empty. Supported formats: #RGB, #RRGGBB (also without #), rgb(255, 87, 51), 255,87,51, or a name such as navy.
+Foreground: Background: Target level (AA/AAA): Category (1=normal, 2=large, 3=UI component): 
+Foreground: #000000 rgb(0, 0, 0)
+Background: #FFFFFF rgb(255, 255, 255)
+Contrast ratio: 21.00:1
++------------+----------------+--------+----------+
+| Rule       | Category       | Status | Required |
++------------+----------------+--------+----------+
+| WCAG AA    | Normal text    | PASS   | 4.50:1   |
+| WCAG AA    | Large text     | PASS   | 3.00:1   |
+| WCAG AA    | UI component   | PASS   | 3.00:1   |
+| WCAG AAA   | Normal text    | PASS   | 7.00:1   |
+| WCAG AAA   | Large text     | PASS   | 4.50:1   |
+| WCAG AAA   | UI component   | N/A    | N/A      |
++------------+----------------+--------+----------+
+5 of 5 applicable contrast checks pass.
+Selected target: WCAG AA / Normal text - PASS.
+This pair meets the selected contrast target.
+Large text: at least 18 pt regular or 14 pt bold.
+Remember: contrast is only one part of accessibility.
+Font size and weight matter; do not rely on color alone (including for color-blind users).
+Provide visible focus, keyboard navigation, image alt text, and screen reader support.
+Consider motion, flashing content, text spacing, and line length.
+These checks alone do not establish WCAG conformance.
+
+1) Check a color pair
+2) Try suggested fix for last failing pair
+3) Show accessibility limitations
+4) Exit
+Choice: 

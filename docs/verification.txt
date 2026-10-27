@@ -1,0 +1,13 @@
+black/white: MATCH 21.00:1; PASS, PASS, PASS, PASS, PASS, N/A
+white/white: MATCH 1.00:1; FAIL, FAIL, FAIL, FAIL, FAIL, N/A
+#777777/white: MATCH 4.48:1; FAIL, PASS, PASS, FAIL, FAIL, N/A
+#767676/#FFF: MATCH 4.54:1; PASS, PASS, PASS, FAIL, PASS, N/A
+#FFC0CB/#000080: MATCH 10.41:1; PASS, PASS, PASS, PASS, PASS, N/A
+rgb(255,87,51)/navy: MATCH 5.08:1; PASS, PASS, PASS, FAIL, PASS, N/A
+#FF0000/#FFFFFF: MATCH 4.00:1; FAIL, PASS, PASS, FAIL, FAIL, N/A
+Invalid [#GG1234]: MATCH error; re-prompt recovered to black/white
+Invalid [rgb(300,0,0)]: MATCH error; re-prompt recovered to black/white
+Invalid [bluee]: MATCH error; re-prompt recovered to black/white
+Invalid []: MATCH error; re-prompt recovered to black/white
+Invalid [   ]: MATCH error; re-prompt recovered to black/white
+EOF: clean exit

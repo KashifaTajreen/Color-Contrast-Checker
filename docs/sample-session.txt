@@ -1,0 +1,27 @@
+PASSING PAIR
+Choice: 1
+Foreground: #FFC0CB
+Background: navy
+Target level (AA/AAA): AA
+Category (1=normal, 2=large, 3=UI component): 1
+Ratio   : 10.41 : 1
+Selected target: AA / Normal text -> PASS
+
+FAILING PAIR AND FIX
+Choice: 1
+Foreground: #777777
+Background: white
+Target level (AA/AAA): AA
+Category (1=normal, 2=large, 3=UI component): 1
+Ratio   : 4.48 : 1
+Selected target: AA / Normal text -> FAIL
+Choice: 2
+Suggested foreground: #767676 rgb(118, 118, 118)
+Ratio   : 4.54 : 1
+Selected target: AA / Normal text -> PASS
+
+INVALID INPUT
+Choice: 1
+Foreground: #GG1234
+Invalid color: Use #RGB or #RRGGBB, for example #3AF.
+Foreground: black
