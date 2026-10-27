@@ -44,8 +44,12 @@ public final class Printer {
                     row.size().label(), needs, status);
         }
         output.println(BORDER);
-        long passed = report.results().stream().filter(RuleResult::passed).count();
-        long applicable = report.results().stream().filter(RuleResult::applicable).count();
+        int passed = 0;
+        int applicable = 0;
+        for (RuleResult result : report.results()) {
+            if (result.applicable()) applicable++;
+            if (result.passed()) passed++;
+        }
         output.println("  " + passed + " of " + applicable + " applicable checks passed\n");
         output.println("  Selected target: " + target.level() + " / " + size.label() + " -> "
                 + report.selected(target, size).verdict());

@@ -4,7 +4,6 @@ import contrast.ContrastChecker.*;
 import java.io.PrintStream;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Scanner;
 /** Demonstrates composition and dependency injection in a recoverable menu loop. */
 public final class ConsoleApp {
@@ -13,7 +12,7 @@ public final class ConsoleApp {
     private final ContrastChecker checker;
     private final ColorSuggester suggester;
     private final Printer printer;
-    private Optional<Attempt> lastFailure = Optional.empty();
+    private Attempt lastFailure;
     public ConsoleApp(Scanner scanner, PrintStream output,
             ContrastChecker checker, ColorSuggester suggester, Printer printer) {
         this.scanner = Objects.requireNonNull(scanner);
@@ -49,26 +48,25 @@ public final class ConsoleApp {
         printer.print(result, rule, size);
         RuleResult focus = rule.evaluate(result.ratio(), size);
         if (focus.applicable() && !focus.passed()) {
-            lastFailure = Optional.of(new Attempt(result, rule, size));
+            lastFailure = new Attempt(result, rule, size);
         }
     }
     private void tryFix() {
-        if (lastFailure.isEmpty()) {
+        if (lastFailure == null) {
             output.println("Check a pair that fails an applicable selected target first.");
             return;
         }
-        Attempt attempt = lastFailure.orElseThrow();
+        Attempt attempt = lastFailure;
         Report original = attempt.result();
-        Optional<Color> fix = suggester.suggest(original.fg(), original.bg(),
+        Color fix = suggester.suggest(original.fg(), original.bg(),
                 attempt.rule().thresholdFor(attempt.size()));
-        if (fix.isEmpty()) {
+        if (fix == null) {
             output.println("No passing foreground was found on this HSL lightness path.");
             return;
         }
-        output.println("Suggested foreground: " + fix.orElseThrow());
-        printer.print(checker.check(fix.orElseThrow(), original.bg()),
-                attempt.rule(), attempt.size());
-        lastFailure = Optional.empty();
+        output.println("Suggested foreground: " + fix);
+        printer.print(checker.check(fix, original.bg()), attempt.rule(), attempt.size());
+        lastFailure = null;
     }
     private Color readColor(String prompt) {
         while (true) {

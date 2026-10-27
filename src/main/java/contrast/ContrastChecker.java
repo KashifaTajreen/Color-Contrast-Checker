@@ -1,9 +1,9 @@
 package contrast;
 import contrast.Rules.*;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-/** Demonstrates dependency injection, composition, streams, and lambdas. */
+/** Uses composition and ordinary lists to check every rule. */
 public final class ContrastChecker {
     private final ContrastCalculator calculator;
     private final List<AccessibilityRule> rules;
@@ -18,15 +18,20 @@ public final class ContrastChecker {
         Objects.requireNonNull(fg, "Foreground is required.");
         Objects.requireNonNull(bg, "Background is required.");
         double ratio = calculator.calculate(fg, bg);
-        List<RuleResult> results = rules.stream()
-                .flatMap(rule -> Arrays.stream(TextSize.values())
-                        .map(size -> rule.evaluate(ratio, size))).toList();
+        List<RuleResult> results = new ArrayList<>();
+        for (AccessibilityRule rule : rules) {
+            for (TextSize size : TextSize.values()) {
+                results.add(rule.evaluate(ratio, size));
+            }
+        }
         return new Report(fg, bg, ratio, results);
     }
     public AccessibilityRule ruleFor(Level level) {
         Objects.requireNonNull(level, "Level is required.");
-        return rules.stream().filter(rule -> rule.level() == level).findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("No rule for " + level));
+        for (AccessibilityRule rule : rules) {
+            if (rule.level() == level) return rule;
+        }
+        throw new IllegalArgumentException("No rule for " + level);
     }
 public record RuleResult(String ruleName, TextSize size, double requiredRatio, boolean passed) {
     public RuleResult {
@@ -58,12 +63,6 @@ public record Report(Color fg, Color bg, double ratio, List<RuleResult> results)
         if (results.isEmpty()) {
             throw new IllegalArgumentException("At least one rule result is required.");
         }
-    }
-    public String verdict() {
-        long applicable = results.stream().filter(RuleResult::applicable).count();
-        long passed = results.stream().filter(RuleResult::applicable)
-                .filter(RuleResult::passed).count();
-        return passed + " of " + applicable + " applicable contrast checks pass.";
     }
     public RuleResult selected(AccessibilityRule rule, TextSize size) { return rule.evaluate(ratio, size); }
     public String verdict(AccessibilityRule rule, TextSize size) {

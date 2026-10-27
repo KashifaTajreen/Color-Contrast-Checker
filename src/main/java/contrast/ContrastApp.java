@@ -7,7 +7,6 @@ import javax.swing.event.*;
 import javax.swing.table.*;
 import java.awt.*;
 import java.util.Locale;
-import java.util.Optional;
 /** Composition and listeners: Swing presents model results without owning calculation or rules. */
 public final class ContrastApp {
     private final ContrastChecker checker;
@@ -33,7 +32,7 @@ public final class ContrastApp {
     };
     private final Border normalBorder = foreground.getBorder();
     private final java.awt.Color green = new java.awt.Color(0, 100, 30), red = new java.awt.Color(170, 0, 0);
-    private SwingWorker<Optional<Color>, Void> worker;
+    private SwingWorker<Color, Void> worker;
     private Color suggested;
     private long revision;
     private ContrastApp(ContrastChecker checker, ColorSuggester suggester) {
@@ -154,11 +153,11 @@ public final class ContrastApp {
             fixText.setText("Finding a text color..."); fixSwatch.setVisible(false);
             // Search away from the event thread so typing and window controls stay responsive.
             worker = new SwingWorker<>() {
-                protected Optional<Color> doInBackground() { return suggester.suggest(fg, bg, focus.requiredRatio()); }
+                protected Color doInBackground() { return suggester.suggest(fg, bg, focus.requiredRatio()); }
                 protected void done() {
                     if (isCancelled() || current != revision) return;
                     try {
-                        suggested = get().orElse(null);
+                        suggested = get();
                         fixText.setText(suggested == null ? "No fix is possible on this lightness path." : suggested.toHex());
                         fixSwatch.setVisible(suggested != null); useFix.setEnabled(suggested != null);
                         if (suggested != null) fixSwatch.setBackground(paint(suggested));

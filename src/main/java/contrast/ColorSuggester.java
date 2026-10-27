@@ -1,10 +1,8 @@
 package contrast;
-import java.util.Comparator;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.stream.Stream;
-/** Demonstrates composition and Optional while searching an HSL lightness path. */
+/** Uses loops and a list to search for a readable foreground color. */
 public final class ColorSuggester {
     private static final double CHANNEL_MAX = 255.0;
     private static final int SEARCH_STEPS = 65_536;
@@ -13,36 +11,47 @@ public final class ColorSuggester {
     public ColorSuggester(ContrastCalculator calculator) {
         this.calculator = Objects.requireNonNull(calculator, "Calculator is required.");
     }
-    public Optional<Color> suggest(Color fg, Color bg, double target) {
+    public Color suggest(Color fg, Color bg, double target) {
         validate(fg, bg, target);
         if (calculator.calculate(fg, bg) >= target) {
-            return Optional.of(fg);
+            return fg;
         }
         Hsl original = toHsl(fg);
-        return suggestBothDirections(fg, bg, target).stream()
-                .min(Comparator.comparingDouble(color ->
-                        Math.abs(toHsl(color).lightness() - original.lightness())));
+        Color best = null;
+        double smallestChange = Double.MAX_VALUE;
+        for (Color color : suggestBothDirections(fg, bg, target)) {
+            double change = Math.abs(toHsl(color).lightness - original.lightness);
+            if (change < smallestChange) {
+                best = color;
+                smallestChange = change;
+            }
+        }
+        return best;
     }
     public List<Color> suggestBothDirections(Color fg, Color bg, double target) {
         validate(fg, bg, target);
         Hsl hsl = toHsl(fg);
-        return Stream.of(search(hsl, bg, target, 0), search(hsl, bg, target, 1))
-                .flatMap(Optional::stream).distinct().toList();
+        List<Color> colors = new ArrayList<>();
+        Color darker = search(hsl, bg, target, 0);
+        Color lighter = search(hsl, bg, target, 1);
+        if (darker != null) colors.add(darker);
+        if (lighter != null && !colors.contains(lighter)) colors.add(lighter);
+        return colors;
     }
-    private Optional<Color> search(Hsl hsl, Color bg, double target, double endpoint) {
+    private Color search(Hsl hsl, Color bg, double target, double endpoint) {
         // Hold hue and saturation fixed; move outward in small lightness steps.
         // Check rounded RGB, because that is the color the user will actually use.
         Color previous = null;
         for (int step = 0; step <= SEARCH_STEPS; step++) {
             double fraction = (double) step / SEARCH_STEPS;
-            double lightness = hsl.lightness() + (endpoint - hsl.lightness()) * fraction;
-            Color candidate = fromHsl(hsl.hue(), hsl.saturation(), lightness);
+            double lightness = hsl.lightness + (endpoint - hsl.lightness) * fraction;
+            Color candidate = fromHsl(hsl.hue, hsl.saturation, lightness);
             if (!candidate.equals(previous) && calculator.calculate(candidate, bg) >= target) {
-                return Optional.of(candidate);
+                return candidate;
             }
             previous = candidate;
         }
-        return Optional.empty();
+        return null;
     }
     private Hsl toHsl(Color color) {
         double r = color.r() / CHANNEL_MAX, g = color.g() / CHANNEL_MAX;
@@ -67,14 +76,15 @@ public final class ColorSuggester {
         double chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
         double secondary = chroma * (1 - Math.abs(hue % 2 - 1));
         double offset = lightness - chroma / 2;
-        double[] channels = switch ((int) hue) {
-            case 0 -> new double[] {chroma, secondary, 0};
-            case 1 -> new double[] {secondary, chroma, 0};
-            case 2 -> new double[] {0, chroma, secondary};
-            case 3 -> new double[] {0, secondary, chroma};
-            case 4 -> new double[] {secondary, 0, chroma};
-            default -> new double[] {chroma, 0, secondary};
-        };
+        double[] channels;
+        switch ((int) hue) {
+            case 0: channels = new double[] {chroma, secondary, 0}; break;
+            case 1: channels = new double[] {secondary, chroma, 0}; break;
+            case 2: channels = new double[] {0, chroma, secondary}; break;
+            case 3: channels = new double[] {0, secondary, chroma}; break;
+            case 4: channels = new double[] {secondary, 0, chroma}; break;
+            default: channels = new double[] {chroma, 0, secondary};
+        }
         return rgb(channel(channels[0] + offset), channel(channels[1] + offset),
                 channel(channels[2] + offset));
     }
@@ -95,5 +105,14 @@ public final class ColorSuggester {
             throw new IllegalArgumentException("Target ratio must be between 1 and 21.");
         }
     }
-    private record Hsl(double hue, double saturation, double lightness) { }
+    private static final class Hsl {
+        final double hue;
+        final double saturation;
+        final double lightness;
+        Hsl(double hue, double saturation, double lightness) {
+            this.hue = hue;
+            this.saturation = saturation;
+            this.lightness = lightness;
+        }
+    }
 }
